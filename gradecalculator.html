@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html >
+<head>
+<title>Grade Calculator</title>
+<style>
+  body{
+    background-color: #fceec3;
+  }
+input[type="text"],input[type="number"] {
+    width: 200px;
+}
+</style>
+<script>
+  function calculateGrade() {
+    var name = document.getElementById("name").value;
+    var marks = [];
+    var totalMarks = 0;
+    for (var i = 1; i <= 5; i++) {
+      var subjectMarks = parseInt(document.getElementById("subject" + i).value);
+      marks.push(subjectMarks);
+      totalMarks += subjectMarks;
+    }
+    var average = totalMarks / 5;
+    var grade;
+    if (average >= 90) {
+      grade = "A+";
+    } else if (average >= 80) {
+      grade = "A";
+    } else if (average >= 70) {
+      grade = "B";
+    } else if (average >= 60) {
+      grade = "C";
+    } else if (average >= 50) {
+      grade = "D";
+    } else {
+      grade = "F";
+    }
+    document.getElementById("result").innerHTML = "Name: " + name + "<br><br>" + "total marks:"+totalMarks+"<br><br>"+"Average Marks: " + average.toFixed(2) + "<br><br>" +"Grade: " + grade+"<br><br>";
+  }
+</script>
+</head>
+<body>
+<h2>Grade Calculator</h2>
+<form>
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" name="name"><br><br>
+  
+  <label for="subject1">DBMS:</label><br>
+  <input type="number" id="subject1" name="subject1" min="0" max="100"><br><br>
+  
+  <label for="subject2">Web Technology:</label><br>
+  <input type="number" id="subject2" name="subject2" min="0" max="100"><br><br>
+  
+  <label for="subject3">Probability:</label><br>
+  <input type="number" id="subject3" name="subject3" min="0" max="100"><br><br>
+  
+  <label for="subject4">ISCP:</label><br>
+  <input type="number" id="subject4" name="subject4" min="0" max="100"><br><br>
+  
+  <label for="subject5">DAA:</label><br>
+  <input type="number" id="subject5" name="subject5" min="0" max="100"><br><br>
+  
+  <button type="button" onclick="calculateGrade()">Calculate</button>
+</form><br>
+<div id="result"></div>
+</body>
+</html>
